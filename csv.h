@@ -63,7 +63,7 @@ namespace io{
                                 return error_message_buffer;
                         }
 
-                        mutable char error_message_buffer[256];
+                        mutable char error_message_buffer[512];
                 };
 
                 const int max_file_name_length = 255;
@@ -1074,6 +1074,9 @@ namespace io{
 
                 template<class overflow_policy, class T>
                 void parse(char*col, T&x){
+                        // Mute unused variable compiler warning
+                        (void)col;
+                        (void)x;
                         // GCC evalutes "false" when reading the template and
                         // "sizeof(T)!=sizeof(T)" only when instantiating it. This is why
                         // this strange construct is used.
